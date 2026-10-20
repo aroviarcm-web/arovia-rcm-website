@@ -4,7 +4,7 @@ import smtplib
 import time
 from email.message import EmailMessage
 
-from flask import Flask, jsonify, request, send_from_directory
+from flask import Flask, jsonify, redirect, request, send_from_directory
 
 try:
     import config  # your private config.py (local computer)
@@ -46,7 +46,16 @@ def too_many(ip):
 
 @app.route("/")
 def home():
-    return send_from_directory(app.static_folder, "index.html")
+    try:
+        return send_from_directory(app.static_folder, "index.html")
+    except Exception:
+        # On Vercel the public folder is served by its CDN
+        return redirect("/index.html")
+
+
+@app.route("/health")
+def health():
+    return "ok"
 
 
 @app.route("/api/contact", methods=["POST"])
@@ -81,7 +90,7 @@ def contact():
         with smtplib.SMTP_SSL("smtp.gmail.com", 465, timeout=20) as server:
             server.login(setting("GMAIL_USER"), setting("GMAIL_APP_PASSWORD").replace(" ", ""))
             server.send_message(msg)
-    except Exception as exc:  # show the reason in the terminal, not to the visitor
+    except Exception as exc:  # show the reason in the logs, not to the visitor
         print("EMAIL ERROR:", exc)
         return jsonify(ok=False, error="Could not send right now."), 502
 
@@ -89,4 +98,5 @@ def contact():
 
 
 if __name__ == "__main__":
-    app.run(host="127.0.0.1", port=5000, debug=True)
+    # Local run only. Vercel starts the app by itself.
+    app.run(host="127.0.0.1", port=5000, debug=False)
