@@ -427,3 +427,5 @@ footer p{max-width:70ch}
 }
 
 .ag-grid{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+
+.cbtn.fb svg{color:#5B9BFF}.cbtn.ig svg{color:#FF7AB6}
