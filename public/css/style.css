@@ -449,3 +449,56 @@ footer p{max-width:70ch}
 .rel span{color:var(--muted);font-size:.93rem;line-height:1.55}
 .rel em{font:600 13px var(--mono);font-style:normal;color:var(--accent)}
 @media(min-width:760px){.f-links{grid-auto-flow:column;grid-template-rows:repeat(6,auto);grid-template-columns:none;gap:8px 36px}}
+
+
+/* AROVIA RCM - FOOTER EMAIL BUTTONS */
+.arovia-email-buttons {
+  max-width: 1200px;
+  margin: 24px auto 0;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,.12);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.arovia-email-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px 16px;
+  border: 1px solid #344b73;
+  border-radius: 999px;
+  background: transparent;
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background .2s ease, border-color .2s ease;
+}
+
+.arovia-email-btn:hover {
+  background: rgba(255,255,255,.08);
+  border-color: #6b8fc7;
+}
+
+.arovia-email-icon {
+  width: 17px;
+  height: 17px;
+  flex: 0 0 17px;
+  color: #ffbf47;
+}
+
+@media (max-width: 600px) {
+  .arovia-email-buttons {
+    gap: 8px;
+  }
+  .arovia-email-btn {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    font-size: 13px;
+    padding: 9px 12px;
+  }
+}
+/* END AROVIA RCM FOOTER EMAIL BUTTONS */
