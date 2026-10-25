@@ -502,3 +502,7 @@ footer p{max-width:70ch}
   }
 }
 /* END AROVIA RCM FOOTER EMAIL BUTTONS */
+
+/* seo3 */
+.legal .meta{color:var(--muted);font-size:.92rem;margin:0 0 18px}
+.legal h2:first-child{margin-top:0}
